@@ -52,4 +52,3 @@ TEST(MultTest, MultStringifyPosNeg) {
 
 
 #endif //__MULT_TEST_HPP__
-

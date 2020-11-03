@@ -5,41 +5,36 @@
 
 class Pow : public Base {
     public:
-	double base;
-	double power;
-        Pow(double a, double b) : Base() { base = a * 1.0; power = b * 1.0; }
+	Base* base;
+	Base* power;
+        Pow(Base* a, Base* b) : Base() { base = a; power = b; }
         virtual double evaluate() {
-           if(base == 0) {
-                if(power > 0){
+           if(base->evaluate() == 0) {
+                if(power->evaluate() > 0){
                     return 0;
                 } else {
                     throw;
                 }
             }
 
-	    if(power == 0 && base != 0) return 1;
+	    if(power->evaluate() == 0 && base->evaluate() != 0) return 1;
 
-	    double res = base * 1.0;
-	    if(power > 0) {
-  	        for(int i = 1; i < power; ++i){
-	            res *= base;
+	    double res = base->evaluate();
+	    double pow = power->evaluate();
+	    if(pow > 0) {
+  	        for(int i = 1; i < pow; ++i){
+	            res *= base->evaluate();
 	        }
 	        return res; 			
 	    } else {
-		power *= -1;
-                for(int i = 1; i < power; ++i){
-                    res *= base;
+		pow *= -1;
+                for(int i = 1; i < pow; ++i){
+                    res *= base->evaluate();
                 }
                 return 1.0 / res; 
 	    }
 	}
-        virtual std::string stringify() {
-	    if(power >= 0){
-		return std::to_string(base) + "**" + std::to_string(power);
-	    } else {
-		return std::to_string(base) + "**(" + std::to_string(power) + ")";
-	    }
-	}	 
+        virtual std::string stringify() {return base->stringify() + "**" + power->stringify();}	 
 };
 
 #endif //__POW_HPP__

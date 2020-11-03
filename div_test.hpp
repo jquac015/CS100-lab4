@@ -51,4 +51,3 @@ TEST(DivTest, DivStringifyPosNeg) {
 }
 
 #endif //__MULT_TEST_HPP__
-

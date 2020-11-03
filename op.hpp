@@ -8,7 +8,9 @@ class Op : public Base {
 	double val;
         Op(double value) : Base() { val = value;}
         virtual double evaluate() {return val;}
-        virtual std::string stringify() { return std::to_string(val); }
+        virtual std::string stringify() { 
+		if(val<0){return "(" + std::to_string(val) + ")"; }
+		else{return std::to_string(val);}
 };
 
 #endif //__OP_HPP__

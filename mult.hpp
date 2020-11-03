@@ -5,14 +5,11 @@
 
 class Mult : public Base {
     public:
-        double val1;
-	double val2;
-        Mult(double value1, double value2) : Base() { val1 = value1; val2 = value2;}
-        virtual double evaluate() {return val1*val2;}
-        virtual std::string stringify() { 
-		if(val2<0){ return std::to_string(val1) + "*(" + std::to_string(val2) + ")"; }
-		else{return std::to_string(val1) + "*" + std::to_string(val2) + "";}
-	}
+        Base* val1;
+	Base* val2;
+        Mult(Base* value1, Base* value2) : Base() { val1 = value1; val2 = value2;}
+        virtual double evaluate() {return (val1->evaluate())*(val2->evaluate());}
+        virtual std::string stringify() {return val1->stringify() + "*" + val2->stringify();}
 };
 
 #endif //__MULT_HPP__

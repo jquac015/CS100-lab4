@@ -5,13 +5,11 @@
 
 class Sub : public Base {
     public:
-        double a;
-	double b;
-        Sub(double first, double second) : Base() { a = first; b = second;}
-        virtual double evaluate() {return (a - b);}
-        virtual std::string stringify() { 
-	    return std::to_string(a) + "-" + std::to_string(b); 
-	}
+        Base* a;
+	Base* b;
+        Sub(Base* first, Base* second) : Base() { a = first; b = second;}
+        virtual double evaluate() {return (a->evaluate() - b->evaluate());}
+        virtual std::string stringify() {return a->stringify() + "-" + b->stringify(); }
 };
 
 #endif 

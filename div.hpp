@@ -5,18 +5,15 @@
 
 class Div : public Base {
     public:
-        double val1;
-        double val2;
-        Div(double value1, double value2) : Base(){val1 = value1; val2 = value2;}
+        Base* val1;
+        Base* val2;
+        Div(Base* value1, Base* value2) : Base(){val1 = value1; val2 = value2;}
         virtual double evaluate() {
-		if(val2==0){
+		if(val2->evaluate()==0){
 			throw;
 		}
-		return val1/val2;}
-        virtual std::string stringify() { 
-		if(val2<0){ return std::to_string(val1) + "/(" + std::to_string(val2) + ")"; }
-                else{return std::to_string(val1) + "/" + std::to_string(val2) + "";}
-	}
+		return val1->evaluate()/val2->evaluate();}
+        virtual std::string stringify() { return val1->stringify() + "/" + val2->stringify();}
 };
 
 #endif //__DIV_HPP__
