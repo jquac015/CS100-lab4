@@ -6,47 +6,64 @@
 #include "add.hpp"
 
 TEST(AddTest, AddEvaluatePositivesWhole) {
-    Add* test = new Add(3.0,4.0);
+    Op* a = new Op(3.0);
+    Op* b = new Op(4.0);
+    Add* test = new Add(a, b);
     EXPECT_EQ(test->evaluate(), 7.0);
 }
 
 TEST(AddTest, AddEvaluateNegativesWhole) {
-    Add* test = new Add(-2.0,-5.0);
+    Op* a = new Op(-2.0);
+    Op* b = new Op(-5.0);
+    Add* test = new Add(a, b);
     EXPECT_EQ(test->evaluate(), -7.0);
 }
 
 TEST(AddTest, AddEvaluatePosNegWhole) {
-    Add* test = new Add(-6.0,9.0);
+    Op* a = new Op(-6.0);
+    Op* b = new Op(9.0);
+    Add* test = new Add(a, b);
     EXPECT_EQ(test->evaluate(), 3.0);
 }
 
 TEST(AddTest, AddEvaluatePositivesDecimal) {
-    Add* test = new Add(7.3,9.1);
+    Op* a = new Op(7.3);
+    Op* b = new Op(9.1);
+    Add* test = new Add(a, b);
     EXPECT_EQ(test->evaluate(), 16.4);
 }
 
 TEST(AddTest, AddEvaluateNegativesDecimal) {
-    Add* test = new Add(-7.3,-9.1);
+    Op* a = new Op(-7.3);
+    Op* b = new Op(-9.1);
+    Add* test = new Add(a, b);
     EXPECT_EQ(test->evaluate(), -16.4);
 }
 
 TEST(AddTest, AddEvaluateZeros) {
-    Add* test = new Add(0.0,0.0);
+    Op* a = new Op(0.0);
+    Add* test = new Add(a, a);
     EXPECT_EQ(test->evaluate(), 0.0);
 }
 
 TEST(AddTest, AddStringifyPositive) {
-    Add* test = new Add(7.3,9.1);
+    Op* a = new Op(7.3);
+    Op* b = new Op(9.1);
+    Add* test = new Add(a, b);
     EXPECT_EQ(test->stringify(), "7.300000+9.100000");
 }
 
 TEST(AddTest, AddStringifyNegative) {
-    Add* test = new Add(-3.7,1.9);
-    EXPECT_EQ(test->stringify(), "-3.700000+1.900000");
+    Op* a = new Op(-3.7);
+    Op* b = new Op(1.9);
+    Add* test = new Add(a, b);
+    EXPECT_EQ(test->stringify(), "(-3.700000)+1.900000");
 }
 
 TEST(AddTest, AddStringifyPosNeg) {
-    Add* test = new Add(3.7,-1.9);
+    Op* a = new Op(3.7);
+    Op* b = new Op(-1.9);
+    Add* test = new Add(a, b);
     EXPECT_EQ(test->stringify(), "3.700000+(-1.900000)");
 }
 

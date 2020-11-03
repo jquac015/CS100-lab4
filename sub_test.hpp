@@ -5,22 +5,30 @@
 #include "sub.hpp"
 
 TEST(SubTest, TestPosInt) {
-    Sub* test = new Sub(3,2);
+    Op* a = new Op(3.0);
+    Op* b = new Op(2.0);
+    Sub* test = new Sub(a, b);
     EXPECT_EQ(test->evaluate(), 1);
 }
 
 TEST(SubTest, TestPosIntPosDec) {
-    Sub* test = new Sub(3,2.1);
+    Op* a = new Op(3.0);
+    Op* b = new Op(2.1);
+    Sub* test = new Sub(a, b);
     EXPECT_NEAR(0.9, test->evaluate(), 0.001);
 }
 
 TEST(SubTest, TestNegDecPosInt) {
-    Sub* test = new Sub(-7.2,2);
+    Op* a = new Op(-7.2);
+    Op* b = new Op(2.0);
+    Sub* test = new Sub(a, b);
     EXPECT_EQ(test->evaluate(), -9.2);
 }
 
 TEST(SubTest, TestPosIntPosDecString) {
-    Sub* test = new Sub(3,2.1);
+    Op* a = new Op(3.0);
+    Op* b = new Op(2.1);
+    Sub* test = new Sub(a, b);    
     EXPECT_EQ(test->stringify(), "3.000000-2.100000");
 }
 #endif
