@@ -4,19 +4,18 @@
 #include "gtest/gtest.h"
 
 #include "op.hpp"
-#include "rand.hpp"
 
 TEST(OpTest, OpEvaluatePositiveWhole) {
-    Op* test = new Op(25.0);
-    EXPECT_EQ(test->evaluate(), 25.0);
+	Op* test = new Op(25.0);
+	EXPECT_EQ(test->evaluate(), 25.0);
 }
 
-TEST(OpTest, OpEvaluatePositiveDecimal) {
+TEST(OpTest2, OpEvaluatePositiveDecimal) {
     Op* test = new Op(7.3);
     EXPECT_EQ(test->evaluate(), 7.3);
 }
 
-TEST(OpTest, OpEvaluateNegativeWhole) {
+TEST(OpTest3, OpEvaluateNegativeWhole) {
     Op* test = new Op(-25.0);
     EXPECT_EQ(test->evaluate(), -25.0);
 }
