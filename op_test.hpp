@@ -5,35 +5,40 @@
 
 #include "op.hpp"
 
-#include "opPos.hpp"
-#include "opNeg.hpp"
-#include "opNegDeci.hpp"
-#include "opPosDeci.hpp"
-
-TEST(OpTest, OpEvaluateNonZero) {
-    Op* test = new Op(8);
-    EXPECT_EQ(test->evaluate(), 0);
+TEST(OpTest, OpEvaluatePositiveWhole) {
+    Op* test = new Op(25.0);
+    EXPECT_EQ(test->evaluate(), 25.0);
 }
 
-
-TEST(OpPosTest, OpEvaluatePositive) {
-    OpPos* test = new OpPos(1);
-    EXPECT_EQ(test->evaluate(), 1);
+TEST(OpTest, OpEvaluatePositiveDecimal) {
+    Op* test = new Op(7.3);
+    EXPECT_EQ(test->evaluate(), 7.3);
 }
 
-TEST(OpNegTest, OpEvaluatePositive) {
-    OpNeg* test = new OpNeg(-1);
-    EXPECT_EQ(test->evaluate(), -1);
+TEST(OpTest, OpEvaluateNegativeWhole) {
+    Op* test = new Op(-25.0);
+    EXPECT_EQ(test->evaluate(), -25.0);
 }
 
-TEST(OpPosDeciTest, OpEvaluatePositiveDecimal) {
-    OpPosDeci* test = new OpPosDeci(5.4);
-    EXPECT_EQ(test->evaluate(), 5.4);
-}
-
-TEST(OpNegDeciTest, OpEvaluateNegativeDecimal) {
-    OpNegDeci* test = new OpNegDeci(-3.7);
+TEST(OpTest, OpEvaluateNegativeDecimal) {
+    Op* test = new Op(-3.7);
     EXPECT_EQ(test->evaluate(), -3.7);
 }
+
+TEST(OpTest, OpEvaluateZero) {
+    Op* test = new Op(0.0);
+    EXPECT_EQ(test->evaluate(), 0.0);
+}
+
+TEST(OpTest, OpStringifyPositiveWhole) {
+    Op* test = new Op(4.0);
+    EXPECT_EQ(test->stringify(), "4.000000");
+}
+
+TEST(OpTest, OpStringifyPositiveDecimal) {
+    Op* test = new Op(8.2);
+    EXPECT_EQ(test->stringify(), "8.200000");
+}
+
 
 #endif //__OP_TEST_HPP__
