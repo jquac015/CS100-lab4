@@ -4,6 +4,7 @@
 #include "gtest/gtest.h"
 
 #include "op.hpp"
+#include "rand.hpp"
 
 TEST(OpTest, OpEvaluatePositiveWhole) {
     Op* test = new Op(25.0);
@@ -39,6 +40,5 @@ TEST(OpTest, OpStringifyPositiveDecimal) {
     Op* test = new Op(8.2);
     EXPECT_EQ(test->stringify(), "8.200000");
 }
-
 
 #endif //__OP_TEST_HPP__
