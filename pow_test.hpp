@@ -5,37 +5,51 @@
 #include "pow.hpp"
 
 TEST(PowTest, TestPosPos) {
-    Pow* test = new Pow(3,2);
+    Op* a = new Op(3.0);
+    Op* b = new Op(2.0);
+    Pow* test = new Pow(a, b);
     EXPECT_EQ(test->evaluate(), 9);
 }
 
 TEST(PowTest, TestPosEvenNeg) {
-    Pow* test = new Pow(3,-2);
+    Op* a = new Op(3.0);
+    Op* b = new Op(-2.0);
+    Pow* test = new Pow(a, b);
     EXPECT_NEAR(test->evaluate(), 1.0/9, 0.01);
 }
 
 TEST(PowTest, TestPosOddNeg) {
-    Pow* test = new Pow(3,-3);
+    Op* a = new Op(3.0);
+    Op* b = new Op(-3.0);
+    Pow* test = new Pow(a, b);    
     EXPECT_NEAR(test->evaluate(), 1.0/27, 0.01);
 }
 
 TEST(PowTest, TestNegEvenPos) {
-    Pow* test = new Pow(-3,2);
+    Op* a = new Op(-3.0);
+    Op* b = new Op(2.0);
+    Pow* test = new Pow(a, b);
     EXPECT_EQ(test->evaluate(), 9);
 }
 
 TEST(PowTest, TestNegOddPos) {
-    Pow* test = new Pow(-3,3);
+    Op* a = new Op(-3.0);
+    Op* b = new Op(3.0);
+    Pow* test = new Pow(a, b);
     EXPECT_EQ(test->evaluate(), -27);
 }
 
 TEST(PowTest, TestZeroNeg) {
-    Pow* test = new Pow(0, -1);
+    Op* a = new Op(0.0);
+    Op* b = new Op(-1.0);
+    Pow* test = new Pow(a, b);
     EXPECT_ANY_THROW(test->evaluate());
 }
 
 TEST(PowTest, TestPosEvenNegString) {
-    Pow* test = new Pow(3,-2);
+    Op* a = new Op(3.0);
+    Op* b = new Op(-2.0);
+    Pow* test = new Pow(a, b);
     EXPECT_EQ(test->stringify(), "3.000000**(-2.000000)");
 }
 #endif

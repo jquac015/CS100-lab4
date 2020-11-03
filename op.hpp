@@ -11,6 +11,7 @@ class Op : public Base {
         virtual std::string stringify() { 
 		if(val<0){return "(" + std::to_string(val) + ")"; }
 		else{return std::to_string(val);}
+	}
 };
 
 #endif //__OP_HPP__
