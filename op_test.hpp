@@ -10,12 +10,12 @@ TEST(OpTest, OpEvaluatePositiveWhole) {
 	EXPECT_EQ(test->evaluate(), 25.0);
 }
 
-TEST(OpTest2, OpEvaluatePositiveDecimal) {
+TEST(OpTest, OpEvaluatePositiveDecimal) {
     Op* test = new Op(7.3);
     EXPECT_EQ(test->evaluate(), 7.3);
 }
 
-TEST(OpTest3, OpEvaluateNegativeWhole) {
+TEST(OpTest, OpEvaluateNegativeWhole) {
     Op* test = new Op(-25.0);
     EXPECT_EQ(test->evaluate(), -25.0);
 }
